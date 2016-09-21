@@ -1,0 +1,10 @@
+{
+  "name": "fountain-inject",
+  "version": "0.0.1",
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.4.1/ReactRouter.min.js",
+    "axios": "^0.9.1"
+  },
+  "devDependencies": {}
+}
