@@ -8,7 +8,7 @@ const Article = React.createClass({
     axios
     .get(url)
     .then(response => {
-      var decoratedMarkdownHtml = marked(response.data);
+      const decoratedMarkdownHtml = marked(response.data);
       this.setState({content: decoratedMarkdownHtml});
     });
   },
