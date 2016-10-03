@@ -8,3 +8,10 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
+
+// Configure marked library to use highlightJS
+marked.setOptions({
+  highlight: function (code) {
+    return hljs.highlightAuto(code).value;
+  }
+});
