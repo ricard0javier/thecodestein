@@ -5,7 +5,8 @@
     "react": "^15.0.1",
     "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.4.1/ReactRouter.min.js",
     "axios": "^0.9.1",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "highlightjs": "^9.6.0"
   },
   "devDependencies": {}
 }
