@@ -3,8 +3,8 @@ const Articles = React.createClass({
     // this.getArticles(this.props.url);
     return {
       articleUrls: [
-      "static/greetings.md",
-      "static/greetings.md"
+        "static/greetings.md",
+        "static/greetings.md"
       ]
     };
   },
