@@ -13,7 +13,7 @@ const Article = React.createClass({
   },
 
   render() {
-    return <div dangerouslySetInnerHTML={{__html: this.state.content}}/>;
+    return <div className="alpha-div" dangerouslySetInnerHTML={{__html: this.state.content}}/>;
   }
 });
 

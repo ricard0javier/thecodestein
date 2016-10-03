@@ -18,7 +18,7 @@ class Main extends React.Component {
         <Header/>
         <main style={MainStyles.main}>
           <Title/>
-          <Article url="static/greetings.md"/>
+          <Articles url="http://localhost:8080/articles"/>
           <Techs/>
         </main>
         <Footer/>
