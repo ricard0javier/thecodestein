@@ -11,7 +11,7 @@ ReactDOM.render(
 
 // Configure marked library to use highlightJS
 marked.setOptions({
-  highlight: function (code) {
+  highlight(code) {
     return hljs.highlightAuto(code).value;
   }
 });
