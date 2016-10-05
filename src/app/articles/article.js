@@ -1,23 +1,23 @@
-const Article = React.createClass({
-  getInitialState() {
-    this.getContent(this.props.url);
-    return {content: "Loading..."};
-  },
+class Article extends React.Component {
+  constructor() {
+    super();
+    this.state = {content: "Loading..."};
+  }
 
-  getContent(url) {
+  componentDidMount() {
     axios
-    .get(url)
+    .get(this.props.url)
     .then(response => {
       const decoratedMarkdownHtml = marked(response.data);
       this.setState({content: decoratedMarkdownHtml});
     });
-  },
+  }
 
   render() {
-    return <div className="alpha-div" dangerouslySetInnerHTML={{__html: this.state.content}}/>;
+    return (<div className="alpha-div" dangerouslySetInnerHTML={{__html: this.state.content}}/>);
   }
-});
+}
 
 Article.propTypes = {
-  url: React.PropTypes.object.isRequired
+  url: React.PropTypes.string.isRequired
 };

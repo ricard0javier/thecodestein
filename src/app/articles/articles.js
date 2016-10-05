@@ -1,13 +1,14 @@
-const Articles = React.createClass({
-  getInitialState() {
+class Articles extends React.Component {
+  constructor() {
+    super();
     // this.getArticles(this.props.url);
-    return {
+    this.state = {
       articleUrls: [
         "static/greetings.md",
         "static/greetings.md"
       ]
     };
-  },
+  }
 
   getArticles(url) {
     axios
@@ -15,7 +16,7 @@ const Articles = React.createClass({
     .then(response => {
       this.setState({articleUrls: response.data});
     });
-  },
+  }
 
   render() {
     return (
@@ -26,8 +27,8 @@ const Articles = React.createClass({
       </div>
     );
   }
-});
+}
 
-Articles.propTypes = {
-  url: React.PropTypes.object.isRequired
-};
+// Articles.propTypes = {
+  // url: React.PropTypes.object.isRequired
+// }

@@ -1,12 +1,29 @@
 {
-  "name": "fountain-inject",
+  "name": "the-codestein",
   "version": "0.0.1",
   "dependencies": {
     "react": "^15.0.1",
-    "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.4.1/ReactRouter.min.js",
+    "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js",
     "axios": "^0.9.1",
     "marked": "^0.3.6",
-    "highlightjs": "^9.6.0"
+    "highlightjs": "^9.6.0",
+    "components-font-awesome": "~4.3.0",
+    "react-bootstrap": "^0.30.5",
+    "bootstrap": "^3.3.7"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "overrides": {
+    "highlightjs": {
+      "main": [
+        "highlight.pack.js",
+        "styles/monokai-sublime.css"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
 }
