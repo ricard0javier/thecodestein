@@ -157,12 +157,13 @@ body {
   animation-name: slide-from-left;
   line-height: 1.5em;
 }
-pre {
-  background: black;
-  border: 0;
-  padding: 0;
-  width: 80%;
-  overflow: scroll;
 
+pre {
+  padding: 0;
+}
+
+pre code {
+  white-space: pre;
+  word-wrap: initial;
 }
 //-------- end of brand design --------------
