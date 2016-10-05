@@ -13,5 +13,6 @@ ReactDOM.render(
 marked.setOptions({
   highlight(code) {
     return hljs.highlightAuto(code).value;
-  }
+  },
+  langPrefix: "hljs "
 });
