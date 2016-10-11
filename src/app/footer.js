@@ -12,9 +12,9 @@ class Footer extends React.Component {
   render() {
     return (
       <footer style={FooterStyles.footer}>
-        Build with ♥ by the&nbsp;
-        <a href="https://github.com/orgs/FountainJS/people">
-          FountainJS team
+        Build by &nbsp;
+        <a target="_blank" href="https://uk.linkedin.com/in/ricardo-villanueva-12b73426">
+          Ricardo Villanueva
         </a>
       </footer>
     );
