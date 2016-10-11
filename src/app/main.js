@@ -18,8 +18,7 @@ class Main extends React.Component {
         <Header/>
         <main className="container" style={MainStyles.main}>
           <Title/>
-          <Articles url="http://localhost:8080/articles"/>
-          <Techs/>
+          <Articles url="http://localhost:8080/api/articles"/>
         </main>
         <Footer/>
       </div>

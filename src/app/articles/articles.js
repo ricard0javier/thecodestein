@@ -1,18 +1,15 @@
 class Articles extends React.Component {
   constructor() {
     super();
-    // this.getArticles(this.props.url);
+
     this.state = {
-      articleUrls: [
-        "static/greetings.md",
-        "static/greetings.md"
-      ]
+      articleUrls: []
     };
   }
 
-  getArticles(url) {
+  componentDidMount() {
     axios
-    .get(url)
+    .get(this.props.url)
     .then(response => {
       this.setState({articleUrls: response.data});
     });
@@ -29,6 +26,6 @@ class Articles extends React.Component {
   }
 }
 
-// Articles.propTypes = {
-  // url: React.PropTypes.object.isRequired
-// }
+Articles.propTypes = {
+  url: React.PropTypes.object.isRequired
+};
