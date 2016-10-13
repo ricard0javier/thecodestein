@@ -27,5 +27,5 @@ class Articles extends React.Component {
 }
 
 Articles.propTypes = {
-  url: React.PropTypes.object.isRequired
+  url: React.PropTypes.string.isRequired
 };

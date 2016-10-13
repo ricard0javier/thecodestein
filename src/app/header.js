@@ -31,9 +31,9 @@ class Header extends React.Component {
 
             <div className="collapse navbar-collapse" id="js-navbar-collapse">
 
-              <ul className="nav navbar-nav" nav-bar-state>
+              <ul className="nav navbar-nav">
                 <li className="active"><a href="#!/">Home</a></li>
-                <li><a ng-href="#!/blog">Blog</a></li>
+                <li><a href="#!/blog">Blog</a></li>
               </ul>
             </div>
           </div>
