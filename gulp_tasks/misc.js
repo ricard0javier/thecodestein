@@ -8,6 +8,8 @@ const conf = require('../conf/gulp.conf');
 
 gulp.task('clean', clean);
 gulp.task('other', other);
+gulp.task('fonts', fonts_tmp);
+gulp.task('fonts:dist', fonts_dist);
 
 function clean() {
   return del([conf.paths.dist, conf.paths.tmp]);
@@ -22,4 +24,24 @@ function other() {
   ])
     .pipe(fileFilter)
     .pipe(gulp.dest(conf.paths.dist));
+}
+
+function fonts_tmp() {
+  const fileFilter = filter(file => file.stat.isFile());
+
+  return gulp.src([
+    path.join(conf.paths.fonts, '/**/*'),
+  ])
+    .pipe(fileFilter)
+    .pipe(gulp.dest(conf.path.tmp('fonts')));
+}
+
+function fonts_dist() {
+  const fileFilter = filter(file => file.stat.isFile());
+
+  return gulp.src([
+    path.join(conf.paths.fonts, '/**/*'),
+  ])
+    .pipe(fileFilter)
+    .pipe(gulp.dest(conf.path.dist('fonts')));
 }

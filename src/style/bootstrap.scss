@@ -171,4 +171,19 @@ pre code {
 img {
   max-width: 100%;
 }
+
+.menu-bars {
+  color: white;
+}
+
+.mm-menu.mm-theme-black {
+    background: $shadow-color;
+    border-color: rgba(255, 255, 255, .5);
+    color: white
+}
+.mm-menu.mm-theme-black .mm-navbar a, .mm-menu.mm-theme-black .mm-navbar>*, .mm-menu.mm-theme-black em.mm-counter{
+    color: white
+}
 //-------- end of brand design --------------
+
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";

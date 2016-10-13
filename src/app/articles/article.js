@@ -1,7 +1,7 @@
 class Article extends React.Component {
   constructor() {
     super();
-    this.state = {content: "Loading..."};
+    this.state = {content: "<i class='fa fa-spinner fa-spin'></i><span> Loading...</span>"};
   }
 
   componentDidMount() {

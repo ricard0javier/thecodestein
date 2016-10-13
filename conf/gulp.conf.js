@@ -19,7 +19,8 @@ exports.paths = {
   dist: 'dist',
   tmp: '.tmp',
   e2e: 'e2e',
-  tasks: 'gulp_tasks'
+  tasks: 'gulp_tasks',
+  fonts: 'bower_components/font-awesome/fonts'
 };
 
 exports.path = {};

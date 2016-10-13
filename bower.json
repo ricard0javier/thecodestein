@@ -2,14 +2,15 @@
   "name": "the-codestein",
   "version": "0.0.1",
   "dependencies": {
-    "components-font-awesome": "~4.3.0",
+    "font-awesome": "^4.6.3",
     "bootstrap": "^3.3.7",
     "react": "^15.0.1",
     "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js",
     "react-bootstrap": "^0.30.5",
     "axios": "^0.9.1",
     "marked": "^0.3.6",
-    "highlightjs": "^9.6.0"
+    "highlightjs": "^9.6.0",
+    "jQuery.mmenu": "^5.7.4"
   },
   "devDependencies": {},
   "overrides": {
@@ -25,10 +26,10 @@
         "dist/js/bootstrap.js"
       ]
     },
-    "react": {
+    "jQuery.mmenu": {
       "main": [
-        "react.min.js",
-        "react-dom.min.js"
+        "dist/js/jquery.mmenu.all.min.js",
+        "dist/css/jquery.mmenu.all.css"
       ]
     }
   }
