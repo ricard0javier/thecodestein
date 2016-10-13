@@ -24,6 +24,12 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
+    },
+    "react": {
+      "main": [
+        "react.min.js",
+        "react-dom.min.js"
+      ]
     }
   }
 }
