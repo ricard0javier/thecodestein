@@ -8,28 +8,37 @@ const HeaderStyles = {
     flex: 1,
     fontSize: '1.5rem',
     margin: '1rem'
-  },
-  date: {
-    flex: 1,
-    textAlign: 'right',
-    margin: '1rem',
-    color: 'white'
   }
 };
 
 class Header extends React.Component {
   render() {
     return (
-      <header style={HeaderStyles.header}>
-        <p style={HeaderStyles.title}>
-          <a href="https://github.com/FountainJS/generator-fountain-webapp" target="_blank">
-            Fountain Generator
-          </a>
-        </p>
-        <p style={HeaderStyles.date}>
-          Generated with FountainJS v0.7.1 on Thu Aug 25 2016 10:19:19 GMT+0000 (UTC)
-        </p>
-      </header>
+      <div className="header">
+        <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div className="container">
+            <div className="navbar-header">
+
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+
+              <a className="navbar-brand" href="#!/">The Codestein</a>
+            </div>
+
+            <div className="collapse navbar-collapse" id="js-navbar-collapse">
+
+              <ul className="nav navbar-nav" nav-bar-state>
+                <li className="active"><a href="#!/">Home</a></li>
+                <li><a ng-href="#!/blog">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

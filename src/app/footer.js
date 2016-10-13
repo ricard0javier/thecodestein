@@ -12,7 +12,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer style={FooterStyles.footer}>
-        Build by &nbsp;
+        Built by &nbsp;
         <a target="_blank" href="https://uk.linkedin.com/in/ricardo-villanueva-12b73426">
           Ricardo Villanueva
         </a>
