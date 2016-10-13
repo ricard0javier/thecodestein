@@ -73,8 +73,5 @@
       "no-undef": 0,
       "no-unused-vars": 0
     }
-  },
-  "dependencies": {
-    "marked": "^0.3.6"
   }
 }
