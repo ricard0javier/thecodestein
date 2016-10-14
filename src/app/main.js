@@ -17,7 +17,7 @@ class Main extends React.Component {
       <div style={MainStyles.container}>
         <Header/>
         <main className="container" style={MainStyles.main}>
-          <Articles url="http://www.thecodestein.com/api/articles"/>
+        <Broadcast/>
         </main>
         <Footer/>
       </div>

@@ -22,7 +22,7 @@ class Header extends React.Component {
               <div className="navbar-brand">
                 <a className="menu-bars" href={this.hashMenuId}><i className="fa fa-bars fa-1x" aria-hidden="true"></i></a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
-                <a href="#!/">The Codestein</a>
+                <a href="#!/">MEDIA TOOLS DEMO</a>
               </div>
             </div>
 

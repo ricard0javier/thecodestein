@@ -10,7 +10,8 @@
     "axios": "^0.9.1",
     "marked": "^0.3.6",
     "highlightjs": "^9.6.0",
-    "jQuery.mmenu": "^5.7.4"
+    "jQuery.mmenu": "^5.7.4",
+    "deepstream.io-client-js": "^1.1.1"
   },
   "devDependencies": {},
   "overrides": {
