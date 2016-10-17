@@ -1,16 +1,19 @@
 class Broadcast extends React.Component {
   constructor() {
     super();
+
     this.state = {
-      email: "aaa",
+      email: "",
       alerts: new Set()
     };
+
     this.client = deepstream('localhost:6020').login();
+    this.id = Math.floor(Math.random() * 1000);
 
     this.handleEmail = this.handleEmail.bind(this);
     this.handleRecordChange = this.handleRecordChange.bind(this);
-    this.publishRecordChange = throttle(this.publishRecordChange, 1000);
-    this.id = Math.floor(Math.random() * 1000);
+
+    this.throttledEventPublisher = throttle(this.throttledEventPublisher, 1000);
   }
 
   componentDidMount() {
@@ -21,10 +24,10 @@ class Broadcast extends React.Component {
 
   handleEmail(event) {
     this.setState({email: event.target.value});
-    this.publishRecordChange({id: this.id}, this.broadcastRecord);
+    this.throttledEventPublisher({id: this.id}, this.broadcastRecord);
   }
 
-  publishRecordChange(value, record) {
+  throttledEventPublisher(value, record) {
     record.set('editedBy', value);
   }
 
@@ -58,41 +61,6 @@ class Broadcast extends React.Component {
     );
   }
 
-}
-
-/**
- * Execute a function given a delay time
- *
- * @param {type} func
- * @param {type} wait
- * @param {type} immediate
- * @returns {Function}
- */
-function debounce(func, wait, immediate) {
-  let timeout = null;
-
-  return () => {
-    const context = this;
-    const args = arguments;
-
-    const later = () => {
-      timeout = null;
-
-      if (!immediate) {
-        func.apply(context, args);
-      }
-    };
-
-    const callNow = immediate && !timeout;
-
-    clearTimeout(timeout);
-
-    timeout = setTimeout(later, wait);
-
-    if (callNow) {
-      func.apply(context, args);
-    }
-  };
 }
 
 function throttle(callback, wait, context = this) {

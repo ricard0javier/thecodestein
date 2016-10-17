@@ -17,7 +17,7 @@ class Main extends React.Component {
       <div style={MainStyles.container}>
         <Header/>
         <main className="container" style={MainStyles.main}>
-        <Broadcast/>
+          <Broadcast/>
         </main>
         <Footer/>
       </div>
