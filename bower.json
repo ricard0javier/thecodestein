@@ -6,21 +6,14 @@
     "bootstrap": "^3.3.7",
     "react": "^15.0.1",
     "react-router": "https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/ReactRouter.min.js",
-    "react-bootstrap": "^0.30.5",
     "axios": "^0.9.1",
     "marked": "^0.3.6",
-    "highlightjs": "^9.6.0",
     "jQuery.mmenu": "^5.7.4",
-    "deepstream.io-client-js": "^1.1.1"
+    "deepstream.io-client-js": "^1.1.1",
+    "prism": "prismjs#^1.5.1"
   },
   "devDependencies": {},
   "overrides": {
-    "highlightjs": {
-      "main": [
-        "highlight.pack.js",
-        "styles/monokai-sublime.css"
-      ]
-    },
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.css",
@@ -31,6 +24,24 @@
       "main": [
         "dist/js/jquery.mmenu.all.min.js",
         "dist/css/jquery.mmenu.all.css"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "dist/jquery.slim.min.js"
+      ]
+    },
+    "react": {
+      "main": [
+        "react.min.js",
+        "react-dom.min.js"
+      ]
+    },
+    "prism": {
+      "main": [
+        "prism.js",
+        "themes/prism-dark.css",
+        "components/prism-bash.js"
       ]
     }
   }

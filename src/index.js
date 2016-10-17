@@ -11,8 +11,8 @@ ReactDOM.render(
 
 // Configure marked library to use highlightJS
 marked.setOptions({
-  highlight(code) {
-    return hljs.highlightAuto(code).value;
+  highlight(code, lang) {
+    return Prism.highlight(code, Prism.languages[lang]);
   },
-  langPrefix: "hljs "
+  langPrefix: "language-"
 });
