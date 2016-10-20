@@ -7,13 +7,13 @@ class Broadcast extends React.Component {
       alerts: new Set()
     };
 
-    this.client = deepstream('localhost:6020').login();
+    this.client = deepstream('http://localhost:6040').login();
     this.id = Math.floor(Math.random() * 1000);
 
     this.handleEmail = this.handleEmail.bind(this);
     this.handleRecordChange = this.handleRecordChange.bind(this);
 
-    this.throttledEventPublisher = throttle(this.throttledEventPublisher, 1000);
+    this.throttledEventPublisher = throttle(this.eventPublisher, 1000);
   }
 
   componentDidMount() {
@@ -27,12 +27,19 @@ class Broadcast extends React.Component {
     this.throttledEventPublisher({id: this.id}, this.broadcastRecord);
   }
 
-  throttledEventPublisher(value, record) {
+  eventPublisher(value, record) {
     record.set('editedBy', value);
   }
 
   handleRecordChange(value) {
-    this.setState({alerts: this.state.alerts.add(value.id)});
+    if (value.id !== this.id) {
+      this.setState({alerts: this.state.alerts.add(value.id)});
+    }
+    setTimeout(this.cleanAlerts(this), 10000);
+  }
+
+  cleanAlerts(scope) {
+    scope.setState({alerts: new Set()});
   }
 
   // ============ RENDER ============
