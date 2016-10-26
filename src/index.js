@@ -1,6 +1,12 @@
-const Router = ReactRouter.Router;
-const Route = ReactRouter.Route;
-const browserHistory = ReactRouter.browserHistory;
+import 'babel-polyfill';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router, Route, browserHistory} from 'react-router';
+
+import {Main} from './app/main';
+
+import './index.scss';
 
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -8,11 +14,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
-
-// Configure marked library to use highlightJS
-marked.setOptions({
-  highlight(code) {
-    return hljs.highlightAuto(code).value;
-  },
-  langPrefix: "hljs "
-});

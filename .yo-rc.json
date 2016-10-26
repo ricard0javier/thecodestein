@@ -1,14 +1,14 @@
 {
   "generator-fountain-react": {
-    "version": "0.7.1",
+    "version": "1.0.0-rc1",
     "props": {
       "framework": "react",
-      "modules": "inject",
+      "modules": "webpack",
       "js": "babel",
       "ci": [],
       "css": "scss",
       "skipInstall": true,
-      "resolved": "/home/travis/build/FountainJS/fountain/generator-fountain-react/generators/app/index.js",
+      "resolved": "/Users/swiip/Workspace/FountainJS/fountain/generator-fountain-react/generators/app/index.js",
       "namespace": "fountain-react",
       "argv": {
         "remain": [],

@@ -9,13 +9,10 @@ body, h1, h2, h3 {
 }
 
 a {
-  color: cyan;
+  color: white;
   text-decoration: none;
 
   &:hover {
     color: #5aadbb;
   }
 }
-
-@import "style/bootstrap";
-@import "style/Article";
