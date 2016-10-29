@@ -22,12 +22,7 @@ services:
       - api
 
   api:
-    image: openjdk:8u92-jre-alpine
-    volumes:
-      - ./infrastructure/thecodestein-backend:/thecodestein-backend
-      - ./infrastructure/README.md:/usr/share/www/articles/README.md
-    entrypoint: ["sh", "/thecodestein-backend/bin/thecodestein-backend"]
-
+    image: ricard0javier/the-codestein-backend
 
   deepstream:
     image: deepstreamio/deepstream.io
