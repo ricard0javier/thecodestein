@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Header} from './header';
 import {Footer} from './footer';
+import {Articles} from './articles/articles';
 require('./configuration/prismConfiguration');
 
 const styles = {
@@ -21,7 +22,8 @@ export class Main extends Component {
     return (
       <div style={styles.container}>
         <Header/>
-        <main style={styles.main}>
+        <main className="container" style={styles.main}>
+          <Articles url="http://www.thecodestein.com/api/articles"/>
         </main>
         <Footer/>
       </div>
