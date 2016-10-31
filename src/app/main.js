@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Header} from './header';
 import {Footer} from './footer';
 import {Articles} from './articles/articles';
+
+require('./configuration/markedConfiguration');
 require('./configuration/prismConfiguration');
 
 const styles = {
