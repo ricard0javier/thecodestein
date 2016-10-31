@@ -1,4 +1,10 @@
+$fa-font-path: '../node_modules/font-awesome/fonts';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import '../node_modules/prismjs/themes/prism-dark.css';
+@import "style/bootstrap";
+@import "style/article";
+
 html, body, #root {
   margin: 0;
   height: 100%;
@@ -10,7 +16,7 @@ body, h1, h2, h3 {
 }
 
 a {
-  color: white;
+  color: cyan;
   text-decoration: none;
 
   &:hover {
