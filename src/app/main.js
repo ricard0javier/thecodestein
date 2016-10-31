@@ -22,7 +22,6 @@ export class Main extends Component {
       <div style={styles.container}>
         <Header/>
         <main style={styles.main}>
-          <Title/>
         </main>
         <Footer/>
       </div>
