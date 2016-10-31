@@ -23,6 +23,8 @@ services:
 
   api:
     image: ricard0javier/the-codestein-backend
+    volumes:
+      - ./infrastructure/README.md:/usr/share/www/static/articles/README.md:ro
 
   deepstream:
     image: deepstreamio/deepstream.io
