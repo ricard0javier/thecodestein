@@ -22,7 +22,6 @@ export class Articles extends Component {
   render() {
     return (
       <div>
-        <span>ARTICLES PAGE</span>
         {this.state.articleUrls.map((articleUrl, index) => (
           <Article key={index} url={articleUrl}/>
         ))}
