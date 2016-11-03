@@ -13,7 +13,7 @@ export class Articles extends Component {
 
   componentDidMount() {
     axios
-    .get(this.props.url)
+    .get(this.props.route.url)
     .then(response => {
       this.setState({articleUrls: response.data});
     });
@@ -22,8 +22,9 @@ export class Articles extends Component {
   render() {
     return (
       <div>
-      {this.state.articleUrls.map((articleUrl, index) => (
-        <Article key={index} url={articleUrl}/>
+        <span>ARTICLES PAGE</span>
+        {this.state.articleUrls.map((articleUrl, index) => (
+          <Article key={index} url={articleUrl}/>
         ))}
       </div>
     );
@@ -31,5 +32,5 @@ export class Articles extends Component {
 }
 
 Articles.propTypes = {
-  url: React.PropTypes.string.isRequired
+  route: React.PropTypes.object.isRequired
 };

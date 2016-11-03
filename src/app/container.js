@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import {Header} from './header';
 import {Footer} from './footer';
-import {Articles} from './articles/articles';
-
-require('./configuration/markedConfiguration');
-require('./configuration/prismConfiguration');
 
 const styles = {
   container: {
@@ -19,16 +15,18 @@ const styles = {
   }
 };
 
-export class Main extends Component {
+export class Container extends Component {
   render() {
     return (
-      <div style={styles.container}>
+      <div className="container" style={styles.container}>
         <Header/>
-        <main className="container" style={styles.main}>
-          <Articles url="http://www.thecodestein.com/api/articles"/>
-        </main>
+        {this.props.children}
         <Footer/>
       </div>
     );
   }
 }
+
+Container.propTypes = {
+  children: React.PropTypes.object
+};

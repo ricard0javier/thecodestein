@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {NavLink} from './navLink';
+
 export class Header extends Component {
   constructor() {
     super();
@@ -30,7 +32,8 @@ export class Header extends Component {
 
             <div className="collapse navbar-collapse">
               <ul className="nav navbar-nav">
-                <li className="active"><a href="#!/">Home</a></li>
+                <li><NavLink to="/articles">Articles</NavLink></li>
+                <li><NavLink to="/about">About</NavLink></li>
               </ul>
             </div>
           </div>
