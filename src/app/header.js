@@ -34,6 +34,7 @@ export class Header extends Component {
               <ul className="nav navbar-nav">
                 <li><NavLink to="/articles">Articles</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
+                <li><NavLink to="/login">Login</NavLink></li>
               </ul>
             </div>
           </div>

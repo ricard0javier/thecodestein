@@ -1,13 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {ButtonToolbar, Button} from 'react-bootstrap';
-import AuthService from '../utils/AuthService';
 
 export class Login extends Component {
-  constructor() {
-    super();
-
-    const {auth} = this.props;
-    this.handleLogin = auth.login.bind(this);
+  componentDidMount() {
+    this.handleLogin = this.props.route.auth.login.bind(this);
   }
 
   render() {
@@ -23,6 +19,5 @@ export class Login extends Component {
 }
 
 Login.propTypes = {
-  location: PropTypes.object,
-  auth: PropTypes.instanceOf(AuthService)
+  route: PropTypes.object.isRequired
 };
