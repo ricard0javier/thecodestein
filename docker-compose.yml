@@ -26,6 +26,15 @@ services:
     volumes:
       - ./infrastructure/README.md:/usr/share/www/static/articles/README.md:ro
 
+  api-only:
+    image: ricard0javier/the-codestein-backend
+    volumes:
+      - ./infrastructure/README.md:/usr/share/www/static/articles/README1.md:ro
+      - ./infrastructure/README.md:/usr/share/www/static/articles/README2.md:ro
+      - ./infrastructure/README.md:/usr/share/www/static/articles/README3.md:ro
+    ports:
+      - 80:8080
+
   deepstream:
     image: deepstreamio/deepstream.io
     ports:
