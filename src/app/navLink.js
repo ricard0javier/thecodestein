@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-export class NavLink extends Component {
-  render() {
-    return (
-      <Link {...this.props} activeStyle={{color: 'cyan'}}/>
-    );
-  }
-}
+const NavLink = ({to}) => (
+  <Link to={to} activeStyle={{color: 'cyan'}}/>
+);
+
+NavLink.propTypes = {
+  to: PropTypes.string.isRequired
+};
+
+export default NavLink;

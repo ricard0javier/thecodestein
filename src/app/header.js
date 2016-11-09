@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {NavLink} from './navLink';
+import NavLink from './navLink';
 
 export class Header extends Component {
   constructor() {
