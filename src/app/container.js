@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
-import {Header} from './header';
-import {Footer} from './footer';
+import React, {Component, PropTypes} from 'react';
+
+import Header from './header';
+import Footer from './footer';
 
 const styles = {
   container: {
@@ -28,5 +29,7 @@ export class Container extends Component {
 }
 
 Container.propTypes = {
-  children: React.PropTypes.object
+  children: PropTypes.object
 };
+
+export default Container;

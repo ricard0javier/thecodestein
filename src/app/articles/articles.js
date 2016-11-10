@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import axios from 'axios';
 import {Article} from './article';
 
 export class Articles extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       articleUrls: []
@@ -31,5 +31,7 @@ export class Articles extends Component {
 }
 
 Articles.propTypes = {
-  route: React.PropTypes.object.isRequired
+  route: PropTypes.object.isRequired
 };
+
+export default Articles;

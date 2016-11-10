@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 
 import NavLink from './navLink';
 
+/*
+* Renders a Header div element which contains:
+* - App Logo
+* - Main Links
+* - Menu Button (TODO)
+* - Login/Logout Button (TODO)
+*/
 export class Header extends Component {
-  constructor() {
-    super();
-    this.menuId = "menu";
-    this.hashMenuId = `#${this.menuId}`;
-  }
-
   render() {
     return (
       <div className="header">
@@ -16,7 +17,7 @@ export class Header extends Component {
           <div className="container">
             <div className="navbar-header">
 
-              <a href={this.hashMenuId} className="navbar-toggle collapsed">
+              <a href="#menu" className="navbar-toggle collapsed">
                 <span className="sr-only">Menu</span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
@@ -24,7 +25,7 @@ export class Header extends Component {
               </a>
 
               <div className="navbar-brand">
-                <a className="menu-bars" href={this.hashMenuId}><i className="fa fa-bars fa-1x" aria-hidden="true"></i></a>
+                <a className="menu-bars" href="#menu"><i className="fa fa-bars fa-1x" aria-hidden="true"></i></a>
                 <span>&nbsp;&nbsp;&nbsp;</span>
                 <span>The Codestein</span>
               </div>
@@ -43,3 +44,5 @@ export class Header extends Component {
     );
   }
 }
+
+export default Header;

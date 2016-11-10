@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import axios from 'axios';
 import marked from 'marked';
 
+import '../configuration/markedConfiguration';
+
 /* eslint-disable react/no-danger */
 export class Article extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {content: "<i class='fa fa-spinner fa-spin'></i><span> Loading...</span>"};
   }
 
@@ -25,5 +27,7 @@ export class Article extends Component {
 /* eslint-enable react/no-danger */
 
 Article.propTypes = {
-  url: React.PropTypes.string.isRequired
+  url: PropTypes.string.isRequired
 };
+
+export default Article;

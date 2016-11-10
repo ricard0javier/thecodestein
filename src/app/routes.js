@@ -3,9 +3,9 @@ import {Router, Route, browserHistory, IndexRedirect} from 'react-router';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
-import {Container} from './container';
-import {Articles} from './articles/articles';
-import {About} from './about';
+import Container from './container';
+import Articles from './articles/articles';
+import About from './about';
 import Login from './views/Login';
 import AuthService from './utils/AuthService';
 
@@ -58,3 +58,5 @@ export class Routes extends Component {
     );
   }
 }
+
+export default Routes;

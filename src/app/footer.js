@@ -10,6 +10,10 @@ const styles = {
   }
 };
 
+/*
+* Renders a Footer div element which contains:
+* - The author name linking to the Linkedin profile
+*/
 export class Footer extends Component {
   render() {
     return (
@@ -22,3 +26,5 @@ export class Footer extends Component {
     );
   }
 }
+
+export default Footer;

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import {Footer} from './footer';
+import Footer from './footer';
 
 describe('Footer', () => {
   it('should be a footer', () => {
