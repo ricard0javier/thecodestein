@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import NavLink from './navLink';
 
@@ -9,40 +9,36 @@ import NavLink from './navLink';
 * - Menu Button (TODO)
 * - Login/Logout Button (TODO)
 */
-export class Header extends Component {
-  render() {
-    return (
-      <div className="header">
-        <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div className="container">
-            <div className="navbar-header">
+const Header = () => (
+  <div className="header">
+    <div className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div className="container">
+        <div className="navbar-header">
 
-              <a href="#menu" className="navbar-toggle collapsed">
-                <span className="sr-only">Menu</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </a>
+          <a href="#menu" className="navbar-toggle collapsed">
+            <span className="sr-only">Menu</span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+          </a>
 
-              <div className="navbar-brand">
-                <a className="menu-bars" href="#menu"><i className="fa fa-bars fa-1x" aria-hidden="true"></i></a>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                <span>The Codestein</span>
-              </div>
-            </div>
-
-            <div className="collapse navbar-collapse">
-              <ul className="nav navbar-nav">
-                <li><NavLink to="/articles">Articles</NavLink></li>
-                <li><NavLink to="/about">About</NavLink></li>
-                <li><NavLink to="/login">Login</NavLink></li>
-              </ul>
-            </div>
+          <div className="navbar-brand">
+            <a className="menu-bars" href="#menu"><i className="fa fa-bars fa-1x" aria-hidden="true"></i></a>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <span>The Codestein</span>
           </div>
         </div>
+
+        <div className="collapse navbar-collapse">
+          <ul className="nav navbar-nav">
+            <li><NavLink to="/articles" value="Articles"/></li>
+            <li><NavLink to="/about" value="About"/></li>
+            <li><NavLink to="/login" value="Login"/></li>
+          </ul>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+);
 
 export default Header;

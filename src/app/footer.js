@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const styles = {
   footer: {
@@ -14,17 +14,13 @@ const styles = {
 * Renders a Footer div element which contains:
 * - The author name linking to the Linkedin profile
 */
-export class Footer extends Component {
-  render() {
-    return (
-      <footer style={styles.footer}>
-        Built by &nbsp;
-        <a target="_blank" href="https://uk.linkedin.com/in/ricardo-villanueva-12b73426">
-          Ricardo Villanueva
-        </a>
-      </footer>
-    );
-  }
-}
+const Footer = () => (
+  <footer style={styles.footer}>
+    Built by &nbsp;
+    <a target="_blank" href="https://uk.linkedin.com/in/ricardo-villanueva-12b73426">
+      Ricardo Villanueva
+    </a>
+  </footer>
+);
 
 export default Footer;

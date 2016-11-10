@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
 import {ButtonToolbar, Button} from 'react-bootstrap';
 
-const Login = ({route}) => (
+const Login = ({route: {handleLogin}}) => (
   <div>
     <h2>Login</h2>
     <ButtonToolbar>
-      <Button bsStyle="primary" onClick={route.handleLogin}>Login</Button>
+      <Button bsStyle="primary" onClick={handleLogin}>Login</Button>
     </ButtonToolbar>
   </div>
 );

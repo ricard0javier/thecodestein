@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 import Header from './header';
 import Footer from './footer';
@@ -16,19 +16,16 @@ const styles = {
   }
 };
 
-export class Container extends Component {
-  render() {
-    return (
-      <div className="container" style={styles.container}>
-        <Header/>
-        {this.props.children}
-        <Footer/>
-      </div>
-    );
-  }
-}
+const Container = props => (
+  <div className="container" style={styles.container}>
+    <Header/>
+    {props.children}
+    <Footer/>
+  </div>
+);
 
 Container.propTypes = {
+  props: PropTypes.object,
   children: PropTypes.object
 };
 

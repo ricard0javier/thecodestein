@@ -1,34 +1,24 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import axios from 'axios';
 import {Article} from './article';
 
-export class Articles extends Component {
-  constructor(props) {
-    super(props);
+const Articles = ({route: {url}}) => {
+  let articleUrls = [];
 
-    this.state = {
-      articleUrls: []
-    };
-  }
-
-  componentDidMount() {
-    axios
-    .get(this.props.route.url)
+  axios
+    .get(url)
     .then(response => {
-      this.setState({articleUrls: response.data});
+      articleUrls = response.data;
     });
-  }
 
-  render() {
-    return (
-      <div>
-        {this.state.articleUrls.map((articleUrl, index) => (
-          <Article key={index} url={articleUrl}/>
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      {articleUrls.map((articleUrl, index) => (
+        <Article key={index} url={articleUrl}/>
+      ))}
+    </div>
+  );
+};
 
 Articles.propTypes = {
   route: PropTypes.object.isRequired

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Router, Route, browserHistory, IndexRedirect} from 'react-router';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
@@ -42,21 +42,17 @@ const store = createStore(reducers);
 
 const handleLogin = () => store.dispatch({type: 'LOGIN'});
 
-export class Routes extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router history={browserHistory}>
-          <Route path="/" component={Container} auth={auth}>
-            <IndexRedirect to="/articles"/>
-            <Route path="articles" component={Articles} url="http://www.thecodestein.com/api/articles"/>
-            <Route path="about" component={About} onEnter={requireAuth}/>
-            <Route path="login" component={Login} handleLogin={handleLogin}/>
-          </Route>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const Routes = () => (
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={Container} auth={auth}>
+        <IndexRedirect to="/articles"/>
+        <Route path="articles" component={Articles} url="http://www.thecodestein.com/api/articles"/>
+        <Route path="about" component={About} onEnter={requireAuth}/>
+        <Route path="login" component={Login} handleLogin={handleLogin}/>
+      </Route>
+    </Router>
+  </Provider>
+);
 
 export default Routes;
