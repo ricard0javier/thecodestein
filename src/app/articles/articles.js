@@ -13,8 +13,8 @@ const Articles = ({route: {url}}) => {
 
   return (
     <div>
-      {articleUrls.map((articleUrl, index) => (
-        <Article key={index} url={articleUrl}/>
+      {articleUrls.map(articleUrl => (
+        <Article key={articleUrl} url={articleUrl}/>
       ))}
     </div>
   );
