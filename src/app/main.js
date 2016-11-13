@@ -46,7 +46,7 @@ const Main = () => (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Container} auth={auth}>
-        <IndexRedirect to="/articles"/>
+        <IndexRedirect to="articles"/>
         <Route path="articles" component={Articles} url="http://www.thecodestein.com/api/articles"/>
         <Route path="about" component={About} onEnter={requireAuth}/>
         <Route path="login" component={Login} handleLogin={handleLogin}/>
