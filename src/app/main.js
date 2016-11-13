@@ -42,7 +42,7 @@ const store = createStore(reducers);
 
 const handleLogin = () => store.dispatch({type: 'LOGIN'});
 
-const Routes = () => (
+const Main = () => (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Container} auth={auth}>
@@ -55,4 +55,4 @@ const Routes = () => (
   </Provider>
 );
 
-export default Routes;
+export default Main;

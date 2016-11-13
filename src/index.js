@@ -1,15 +1,15 @@
 import 'babel-polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 
-import Routes from './app/routes';
+import Main from './app/main';
 
 import './index.scss';
 
 /*
 * Substitutes the DOM element with id='root' with the React component 'Routes'
 */
-ReactDOM.render(
-  <Routes/>,
+render(
+  <Main/>,
   document.getElementById('root')
 );
