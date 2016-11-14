@@ -1,55 +1,50 @@
-import React from 'react';
-import {Router, Route, browserHistory, IndexRedirect} from 'react-router';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import React from "react";
+import {Router, Route, browserHistory, IndexRedirect} from "react-router";
+import {Provider} from "react-redux";
+import {createStore, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
+import newAuth0Lock, {handleLogin, registerLoggedInListener} from "./utils/auth-service";
+import About from "./view/about";
+import Articles from "./articles/articles";
+import reducers from "./controller/reducer";
+import {handleLoggedIn} from "./controller/action/auth-actions";
+import TilesContainer from "./controller/container/tiles-container";
+import UserInfoContainer from "./controller/container/user-info-container";
 
-import Container from './container';
-import Articles from './articles/articles';
-import About from './about';
-import Login from './views/Login';
-import AuthService from './utils/AuthService';
+// define the package constants
+const __AUTH0_CLIENT_ID__ = '35Fn4o16JWNyXaKVm4YJT2DL01qrSnF6';
+const __AUTH0_DOMAIN__ = 'ricard0javier.eu.auth0.com';
 
-// const auth = new AuthService(__AUTH0_CLIENT_ID__, __AUTH0_DOMAIN__);
-const auth = new AuthService('35Fn4o16JWNyXaKVm4YJT2DL01qrSnF6', 'ricard0javier.eu.auth0.com');
+const store = createStore(
+  reducers,
+  applyMiddleware(thunk)
+);
+const auth0Lock = newAuth0Lock(__AUTH0_CLIENT_ID__, __AUTH0_DOMAIN__);
+
+// associate the store dispatch with the logged in event
+const loggedInListener = idToken => store.dispatch(handleLoggedIn(idToken));
+registerLoggedInListener(auth0Lock, loggedInListener);
 
 // validate authentication for private routes
 const requireAuth = (nextState, replace) => {
-  if (auth.loggedIn()) {
-    auth.logout();
-  }
-  console.log(auth.loggedIn());
-  if (!auth.loggedIn()) {
-    replace({pathname: '/login'});
+  if (!store.getState().auth.token) {
+    replace({pathname: '/user'});
   }
 };
 
-const login = () => {
-  auth.login();
-};
-
-const reducers = (state = {}, action) => {
-  switch (action.type) {
-
-    case 'LOGIN':
-      login();
-      break;
-    default:
-      return {};
-  }
-};
-
-const store = createStore(reducers);
-
-const handleLogin = () => store.dispatch({type: 'LOGIN'});
-
+/**
+* Configures the application with:
+* - Redux (<Provider/>)
+* - React Router (<Router/>)
+*/
 const Main = () => (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Container} auth={auth}>
-        <IndexRedirect to="articles"/>
+      <Route path="/" component={TilesContainer}>
+        <IndexRedirect to="/articles"/>
         <Route path="articles" component={Articles} url="http://www.thecodestein.com/api/articles"/>
         <Route path="about" component={About} onEnter={requireAuth}/>
-        <Route path="login" component={Login} handleLogin={handleLogin}/>
+        <Route path="user" component={UserInfoContainer} handleLogin={handleLogin(auth0Lock)}/>
       </Route>
     </Router>
   </Provider>

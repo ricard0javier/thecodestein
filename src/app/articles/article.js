@@ -1,8 +1,7 @@
-import React, {PropTypes} from 'react';
-import axios from 'axios';
-import marked from 'marked';
-
-import '../configuration/markedConfiguration';
+import React, {PropTypes} from "react";
+import axios from "axios";
+import marked from "marked";
+import "../configuration/markedConfiguration";
 
 /* eslint-disable react/no-danger */
 const Article = url => {

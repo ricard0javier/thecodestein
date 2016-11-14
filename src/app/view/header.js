@@ -1,8 +1,7 @@
-import React from 'react';
+import React from "react";
+import NavLink from "./navLink";
 
-import NavLink from './navLink';
-
-/*
+/**
 * Renders a Header div element which contains:
 * - App Logo
 * - Main Links
@@ -33,7 +32,7 @@ const Header = () => (
           <ul className="nav navbar-nav">
             <li><NavLink to="/articles" value="Articles"/></li>
             <li><NavLink to="/about" value="About"/></li>
-            <li><NavLink to="/login" value="Login"/></li>
+            <li><NavLink to="/user" value="User"/></li>
           </ul>
         </div>
       </div>

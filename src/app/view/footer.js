@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const styles = {
   footer: {
@@ -10,7 +10,7 @@ const styles = {
   }
 };
 
-/*
+/**
 * Renders a Footer div element which contains:
 * - The author name linking to the Linkedin profile
 */

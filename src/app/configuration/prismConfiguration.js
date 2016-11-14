@@ -1,1 +1,1 @@
-import '../../../node_modules/prismjs/components/prism-bash';
+import "../../../node_modules/prismjs/components/prism-bash";
