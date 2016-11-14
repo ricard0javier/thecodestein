@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import newAuth0Lock, {handleLogin, registerLoggedInListener} from "./utils/auth-service";
 import About from "./view/about";
-import Articles from "./articles/articles";
+import Articles from "./view/articles";
 import reducers from "./controller/reducer";
 import {handleLoggedIn} from "./controller/action/auth-actions";
 import TilesContainer from "./controller/container/tiles-container";

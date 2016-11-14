@@ -10,7 +10,7 @@ const Articles = ({articles}) => (
 );
 
 Articles.propTypes = {
-  route: PropTypes.object.isRequired
+  articles: PropTypes.object.isRequired
 };
 
 export default Articles;

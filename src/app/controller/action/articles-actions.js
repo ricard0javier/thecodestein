@@ -7,7 +7,7 @@ export function receiveArticles(articles) {
   return {
     type: RECEIVE_ARTICLES,
     articles
-  }
+  };
 }
 
 export const REQUEST_ARTICLES = 'REQUEST_ARTICLES';
