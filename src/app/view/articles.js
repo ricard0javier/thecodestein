@@ -3,8 +3,8 @@ import Article from "./article";
 
 const Articles = ({articles}) => (
   <div>
-    {articles.map(articleUrl => (
-      <Article key={articleUrl} url={articleUrl}/>
+    {articles.map((articleContent, index) => (
+      <Article key={index} content={articleContent}/>
     ))}
   </div>
 );

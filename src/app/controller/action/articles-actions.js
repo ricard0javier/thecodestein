@@ -1,4 +1,5 @@
 import axios from "axios";
+import marked from "marked";
 
 const API_ARTICLES_URL = "http://www.thecodestein.com/api/articles";
 
@@ -13,5 +14,12 @@ export function receiveArticles(articles) {
 export const fetchArticles = () => dispatch => {
   axios
     .get(API_ARTICLES_URL)
-    .then(response => dispatch(receiveArticles(response.data)));
+    .then(response => {
+      const articleRequestList = response.data.map(url => axios.get(url));
+      axios.all(articleRequestList)
+        .then(axios.spread((...articleResponseList) => {
+          const articleContentList = articleResponseList.map(response => marked(response.data));
+          dispatch(receiveArticles(articleContentList));
+        }));
+    });
 };
