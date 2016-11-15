@@ -10,7 +10,7 @@ const Articles = ({articles}) => (
 );
 
 Articles.propTypes = {
-  articles: PropTypes.object.isRequired
+  articles: PropTypes.array.isRequired
 };
 
 export default Articles;

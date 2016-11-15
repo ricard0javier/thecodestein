@@ -4,9 +4,8 @@ import marked from "marked";
 import "../configuration/markedConfiguration";
 
 /* eslint-disable react/no-danger */
-const Article = url => {
+const Article = ({url}) => {
   let content = "<i class='fa fa-spinner fa-spin'></i><span> Loading...</span>";
-
   axios
     .get(url)
     .then(response => {

@@ -5,9 +5,10 @@ import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import newAuth0Lock, {handleLogin, registerLoggedInListener} from "./utils/auth-service";
 import About from "./view/about";
-import Articles from "./view/articles";
 import reducers from "./controller/reducer";
 import {handleLoggedIn} from "./controller/action/auth-actions";
+import {fetchArticles} from "./controller/action/articles-actions";
+import ArticlesContainer from "./controller/container/articles-container";
 import TilesContainer from "./controller/container/tiles-container";
 import UserInfoContainer from "./controller/container/user-info-container";
 
@@ -26,11 +27,13 @@ const loggedInListener = idToken => store.dispatch(handleLoggedIn(idToken));
 registerLoggedInListener(auth0Lock, loggedInListener);
 
 // validate authentication for private routes
-const requireAuth = (nextState, replace) => {
+const onEnterPrivateRoute = (nextState, replace) => {
   if (!store.getState().auth.token) {
     replace({pathname: '/user'});
   }
 };
+
+const onEnterArticles = () => store.dispatch(fetchArticles());
 
 /**
 * Configures the application with:
@@ -42,8 +45,8 @@ const Main = () => (
     <Router history={browserHistory}>
       <Route path="/" component={TilesContainer}>
         <IndexRedirect to="/articles"/>
-        <Route path="articles" component={Articles} url="http://www.thecodestein.com/api/articles"/>
-        <Route path="about" component={About} onEnter={requireAuth}/>
+        <Route path="articles" component={ArticlesContainer} onEnter={onEnterArticles}/>
+        <Route path="about" component={About} onEnter={onEnterPrivateRoute}/>
         <Route path="user" component={UserInfoContainer} handleLogin={handleLogin(auth0Lock)}/>
       </Route>
     </Router>
