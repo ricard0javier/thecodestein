@@ -1,28 +1,56 @@
 import Auth0Lock from "auth0-lock";
-import {setTokenIntoStorage} from "../controller/container/user-info-container";
 
+const __AUTH0_CLIENT_ID__ = '35Fn4o16JWNyXaKVm4YJT2DL01qrSnF6';
+const __AUTH0_DOMAIN__ = 'ricard0javier.eu.auth0.com';
 const AUTHENTICATED_EVENT = 'authenticated';
+const __ID_TOKEN_KEY__ = 'id_token';
 
-const newAuth0Lock = (clientId, domain) => {
+let authInstance;
+let localLogoutHandler;
+
+const auth = (loginHandler, logoutHandler) => {
   const options = {
+    autoclose: true,
     allowForgotPassword: false,
     allowSignUp: false,
     auth: {
+      redirect: false,
       responseType: 'token'
     }
   };
+  localLogoutHandler = logoutHandler;
   // instantiates Auth0 and store
-  const auth0Lock = new Auth0Lock(clientId, domain, options);
+  const auth0Lock = new Auth0Lock(__AUTH0_CLIENT_ID__, __AUTH0_DOMAIN__, options);
   // saves the token in the local storage
-  auth0Lock.on(AUTHENTICATED_EVENT, result => setTokenIntoStorage(result.idToken));
+  auth0Lock.on(AUTHENTICATED_EVENT, result => localStorage.setItem(__ID_TOKEN_KEY__, result.idToken));
+  auth0Lock.on(AUTHENTICATED_EVENT, result => loginHandler(result.idToken));
   return auth0Lock;
 };
 
-export const handleLogin = auth0Lock => () => auth0Lock.show();
+export const getInstance = (loginHandler, logoutHandler) => {
+  if (authInstance === undefined) {
+    authInstance = auth(loginHandler, logoutHandler);
 
-// register the handler for authentication events
-export const registerLoggedInListener = (auth0Lock, handler) => {
-  auth0Lock.on(AUTHENTICATED_EVENT, result => handler(result.idToken));
+    const tokenId = localStorage.getItem(__ID_TOKEN_KEY__);
+    console.log(tokenId);
+    if (tokenId !== undefined && tokenId !== null) {
+      loginHandler(tokenId);
+    }
+  }
+
+  return authInstance;
 };
 
-export default newAuth0Lock;
+export const login = () => {
+  getInstance().show({
+    responseType: 'token',
+    authParams: {
+      state: window.location.pathname
+    }
+  });
+};
+
+export const logout = () => {
+  localStorage.removeItem(__ID_TOKEN_KEY__);
+  localLogoutHandler();
+};
