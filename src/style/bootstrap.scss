@@ -2,8 +2,8 @@
 $fa-font-path: '../node_modules/font-awesome/fonts';
 @import '../node_modules/font-awesome/scss/font-awesome.scss';
 
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
-$font-family-base: 'Titillium Web', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Voces');
+$font-family-base: 'Voces', sans-serif;
 
 $icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 $icon-font-name: 'glyphicons-halflings-regular';
@@ -21,11 +21,7 @@ $warn-color:  #F0AD4E;
 html, body, #root {
   margin: 0;
   height: 100%;
-  font-family: 'Titillium Web', sans-serif;
-}
-
-body, h1, h2, h3 {
-  font-weight: 300
+  font-family: 'Voces', sans-serif;
 }
 
 a {
@@ -142,7 +138,7 @@ body {
   color: $font-color;
 
   h1, h2 {
-    color: $danger-color;
+    color: $info-color;
   }
 }
 
@@ -197,6 +193,7 @@ pre {
 pre code {
   white-space: pre;
   word-wrap: initial;
+  font-size: 12px;
 }
 
 img {
