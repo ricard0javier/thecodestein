@@ -1,28 +1,40 @@
 {
   "dependencies": {
-    "auth0-lock": "^10.5.1",
+    "auth0-lock": "^10.8.1",
     "axios": "^0.9.1",
     "bootstrap": "^3.3.7",
     "font-awesome": "FortAwesome/Font-Awesome#179c519ae92af4c35c7b151e973955e83044bdfd",
     "marked": "^0.3.6",
     "prismjs": "^1.5.1",
     "react": "^15.0.1",
-    "react-bootstrap": "^0.30.6",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.0.1",
+    "react-ga": "^2.1.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
+    "react-router-bootstrap": "^0.23.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.4"
   },
   "devDependencies": {
+    "@types/axios": "^0.9.32",
+    "@types/react": "^0.14.39",
+    "@types/react-addons-test-utils": "^0.14.15",
+    "@types/react-dom": "^0.14.17",
+    "@types/react-router": "^2.0.37",
     "autoprefixer": "^6.2.2",
+    "aws-sdk": "^2.7.19",
     "babel-core": "^6.13.0",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.0",
     "babel-plugin-istanbul": "^2.0.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.19.0",
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-polyfill": "^6.7.4",
     "babel-preset-es2015": "^6.2.0",
     "babel-preset-react": "^6.1.18",
+    "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.9.11",
     "browser-sync-spa": "^1.0.3",
     "css-loader": "^0.23.1",
@@ -58,11 +70,13 @@
     "react-addons-test-utils": "^15.0.1",
     "react-hot-loader": "^1.3.0",
     "redux-devtools": "^3.3.1",
+    "s3-deploy": "^0.7.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.20",
+    "webpack": "^2.1.0-beta.27",
     "webpack-dev-middleware": "^1.4.0",
+    "webpack-fail-plugin": "^1.0.5",
     "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
@@ -70,7 +84,9 @@
     "serve": "gulp serve",
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
-    "test:auto": "gulp test:auto"
+    "test:auto": "gulp test:auto",
+    "deploy": "gulp cleanS3Bucket --bucketName dev.thecodestein.com && s3-deploy './dist/**' --cwd './dist' --signatureVersion v4 --region eu-central-1 --bucket dev.thecodestein.com --gzip --cache 86400",
+    "promoteToLive": "gulp cloneS3BucketContent --fromBucketName dev.thecodestein.com --toBucketName www.thecodestein.com"
   },
   "eslintConfig": {
     "root": true,
@@ -82,5 +98,11 @@
       "xo-react/space",
       "xo-space/esnext"
     ]
-  }
+  },
+  "name": "thecodestein.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ricard0javier/thecodestein.git",
+  "author": "Ricardo Villanueva <villanueva.ricardo@gmail.com>",
+  "license": "MIT"
 }

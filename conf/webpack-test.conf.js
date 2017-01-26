@@ -1,26 +1,28 @@
+const webpack = require('webpack');
 module.exports = {
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint'
-      }
-    ],
-
     loaders: [
       {
         test: /.json$/,
         loaders: [
-          'json'
+          'json-loader'
         ]
+      },
+      {
+        test: /.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        enforce: 'pre'
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: [
-          'babel'
-        ]
+        loader: 'babel-loader',
+        query:
+          {
+            presets:['react', 'es2015'],
+            plugins: ["transform-es2015-destructuring", "transform-object-rest-spread"]
+          }
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -32,11 +34,15 @@ module.exports = {
       }
     ]
   },
-  plugins: [],
-  debug: true,
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {},
+      debug: true
+    })
+  ],
   devtool: 'source-map',
   externals: {
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
+    'react/lib/ExecutionEnvironment': 'true',
+    'react/lib/ReactContext': 'true'
   }
 };
