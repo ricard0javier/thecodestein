@@ -1,4 +1,15 @@
+// -------------- Fonts --------------
+$fa-font-path: '../node_modules/font-awesome/fonts';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+$font-family-base: 'Titillium Web', sans-serif;
+
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+$icon-font-name: 'glyphicons-halflings-regular';
+
 // -------------- Customization --------------
+@import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss';
 $shadow-color: #0D1A20;
 $background-color: #1F2E3E;
 $info-color:  #34A1DB;
@@ -6,6 +17,26 @@ $font-color: #ECF0F1;
 $danger-color: #D81F19;
 $success-color:  #5CB85C;
 $warn-color:  #F0AD4E;
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+body, h1, h2, h3 {
+  font-weight: 300
+}
+
+a {
+  color: cyan;
+  text-decoration: none;
+
+  &:hover {
+    color: #5aadbb;
+  }
+}
+
 
 
 // -------------- bootstrap --------------
