@@ -1,9 +1,23 @@
 import axios from "axios";
 import marked from "marked";
 
-const API_ARTICLES_URL = "http://www.thecodestein.com/api/articles";
+// Actions
+const RECEIVE_ARTICLES = 'app/articles/RECEIVE_ARTICLES';
+const ADD_ARTICLES = 'app/articles/ADD_ARTICLES';
 
-export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES';
+// Reducers
+const articlesReducer = (state = [], action) => {
+  switch (action.type) {
+
+    case RECEIVE_ARTICLES:
+      return action.articles;
+
+    default:
+      return state;
+  }
+};
+
+// Action Creators
 export function receiveArticles(articles) {
   return {
     type: RECEIVE_ARTICLES,
@@ -11,7 +25,14 @@ export function receiveArticles(articles) {
   };
 }
 
+export function addArticles() {
+  return {
+    type: ADD_ARTICLES
+  };
+}
+
 export const fetchArticles = () => dispatch => {
+  const API_ARTICLES_URL = "//www.thecodestein.com/api/articles";
   axios
     .get(API_ARTICLES_URL)
     .then(response => {
@@ -23,3 +44,5 @@ export const fetchArticles = () => dispatch => {
         }));
     });
 };
+
+export default articlesReducer;

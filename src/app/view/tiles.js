@@ -1,26 +1,13 @@
 import React, {PropTypes} from "react";
 import Header from "./header";
-import Footer from "./footer";
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100%'
-  },
-  main: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column'
-  }
-};
+import Footer from "../controller/container/footerContainer";
 
 /**
 * Describes the structure of the application in terms of components
 */
 const Tiles = ({children}) => {
   return (
-    <div className="container" style={styles.container}>
+    <div className="container-fluid">
       <Header/>
       {children}
       <Footer/>

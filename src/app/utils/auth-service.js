@@ -1,9 +1,11 @@
 import Auth0Lock from "auth0-lock";
+import axios from "axios";
 
 const __AUTH0_CLIENT_ID__ = '35Fn4o16JWNyXaKVm4YJT2DL01qrSnF6';
 const __AUTH0_DOMAIN__ = 'ricard0javier.eu.auth0.com';
 const AUTHENTICATED_EVENT = 'authenticated';
 const __ID_TOKEN_KEY__ = 'id_token';
+const TOKEN_INFO_URL = "https://{{auth0_domain}}/tokeninfo".replace("{{auth0_domain}}", __AUTH0_DOMAIN__);
 
 let authInstance;
 let localLogoutHandler;
@@ -32,9 +34,13 @@ export const getInstance = (loginHandler, logoutHandler) => {
     authInstance = auth(loginHandler, logoutHandler);
 
     const tokenId = localStorage.getItem(__ID_TOKEN_KEY__);
-    console.log(tokenId);
     if (tokenId !== undefined && tokenId !== null) {
-      loginHandler(tokenId);
+      /* eslint-disable camelcase */
+      axios
+        .post(TOKEN_INFO_URL, {id_token: tokenId})
+        .then(() => loginHandler(tokenId))
+        .catch(() => logoutHandler());
+      /* eslint-enable camelcase */
     }
   }
 

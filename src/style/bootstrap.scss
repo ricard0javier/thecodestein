@@ -33,8 +33,6 @@ a {
   }
 }
 
-
-
 // -------------- bootstrap --------------
 .navbar-inverse {
   background-color: $background-color;
@@ -70,16 +68,6 @@ a {
 
 //-------- headers and footers --------------
 
-.footer > .container {
-  text-align: right;
-}
-
-.header,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 /* Custom page header */
 .header {
   border-bottom: 1px solid $background-color;
@@ -92,14 +80,6 @@ a {
     line-height: 40px;
     padding-bottom: 19px;
   }
-}
-
-/* Custom page footer */
-.footer {
-  position: absolute;
-  padding-top: 20px;
-  color: $background-color;
-  bottom: 0;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -117,8 +97,7 @@ a {
 }
 
 /* Remove the padding we set earlier */
-.header,
-.footer {
+.header{
   padding-left: 0;
   padding-right: 0;
 }
@@ -213,3 +192,25 @@ img {
     color: white
 }
 //-------- end of brand design --------------
+
+
+.alpha-div {
+  background-color: rgba($background-color, 0.9);
+  margin-top: 5px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.dropzone {
+  border: $background-color 2px dashed;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 24px;
+  color: $info-color;
+}
+
+.dropzoneActive {
+  border-style: solid;
+  color: $font-color;
+  background: $info-color;
+}
