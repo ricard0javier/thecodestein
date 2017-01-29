@@ -87,8 +87,8 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "deploy": "gulp cleanS3Bucket --bucketName dev.thecodestein.com && s3-deploy './dist/**' --cwd './dist' --signatureVersion v4 --region eu-central-1 --bucket dev.thecodestein.com --gzip --cache 86400",
-    "promoteToLive": "gulp cloneS3BucketContent --fromBucketName dev.thecodestein.com --toBucketName www.thecodestein.com"
+    "deploy": "gulp cleanS3Bucket --bucketName dev.ricardovz.com && s3-deploy './dist/**' --cwd './dist' --signatureVersion v4 --region eu-central-1 --bucket dev.ricardovz.com",
+    "promoteToLive": "gulp cloneS3BucketContent --fromBucketName dev.ricardovz.com --toBucketName www.ricardovz.com"
   },
   "eslintConfig": {
     "root": true,
