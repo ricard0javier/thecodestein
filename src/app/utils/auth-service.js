@@ -1,11 +1,9 @@
 import Auth0Lock from "auth0-lock";
 import axios from "axios";
+import CONFIG from "../configuration/appConfiguration.js";
 
-const __AUTH0_CLIENT_ID__ = '35Fn4o16JWNyXaKVm4YJT2DL01qrSnF6';
-const __AUTH0_DOMAIN__ = 'ricard0javier.eu.auth0.com';
 const AUTHENTICATED_EVENT = 'authenticated';
 const __ID_TOKEN_KEY__ = 'id_token';
-const TOKEN_INFO_URL = "https://{{auth0_domain}}/tokeninfo".replace("{{auth0_domain}}", __AUTH0_DOMAIN__);
 
 let authInstance;
 let localLogoutHandler;
@@ -22,7 +20,7 @@ const auth = (loginHandler, logoutHandler) => {
   };
   localLogoutHandler = logoutHandler;
   // instantiates Auth0 and store
-  const auth0Lock = new Auth0Lock(__AUTH0_CLIENT_ID__, __AUTH0_DOMAIN__, options);
+  const auth0Lock = new Auth0Lock(CONFIG.auth.clientId, CONFIG.auth.domain, options);
   // saves the token in the local storage
   auth0Lock.on(AUTHENTICATED_EVENT, result => localStorage.setItem(__ID_TOKEN_KEY__, result.idToken));
   auth0Lock.on(AUTHENTICATED_EVENT, result => loginHandler(result.idToken));
@@ -37,7 +35,7 @@ export const getInstance = (loginHandler, logoutHandler) => {
     if (tokenId !== undefined && tokenId !== null) {
       /* eslint-disable camelcase */
       axios
-        .post(TOKEN_INFO_URL, {id_token: tokenId})
+        .post(CONFIG.auth.tokenInfo, {id_token: tokenId})
         .then(() => loginHandler(tokenId))
         .catch(() => logoutHandler());
       /* eslint-enable camelcase */

@@ -3,23 +3,14 @@ const LOGGED_IN = 'app/auth/LOGGED_IN';
 const LOGGED_OUT = 'app/auth/LOGGED_OUT';
 
 // Reducers
-const initialState = {
-  tokenId: ""
-};
-const reducer = (state = initialState, action) => {
+const reducer = (state = {tokenId: ""}, action) => {
   switch (action.type) {
 
     case LOGGED_IN:
-      return {
-        ...state,
-        tokenId: action.tokenId
-      };
+      return {...state, tokenId: action.tokenId};
 
     case LOGGED_OUT:
-      return {
-        ...state,
-        tokenId: ""
-      };
+      return {...state, tokenId: ""};
 
     default:
       return state;

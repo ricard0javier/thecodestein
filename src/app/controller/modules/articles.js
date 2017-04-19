@@ -1,15 +1,15 @@
 import axios from "axios";
 import marked from "marked";
+import CONFIG from "../../configuration/appConfiguration.js";
 
 // Actions
 const RECEIVE_ARTICLES = 'app/articles/RECEIVE_ARTICLES';
-const ADD_ARTICLES = 'app/articles/ADD_ARTICLES';
 
 // const LOAD = 'app/members/LOAD';
 // const LOAD_SUCCESS = 'app/members/LOAD_SUCCESS';
 // const LOAD_FAIL = 'app/members/LOAD_FAIL';
-// const EDIT_START = 'app/members/EDIT_START';
-// const EDIT_STOP = 'app/members/EDIT_STOP';
+const EDIT_START = 'app/members/EDIT_START';
+const EDIT_STOP = 'app/members/EDIT_STOP';
 // const ARTICLES_SAVE = 'app/articles/SAVE';
 const ARTICLES_SAVE_SUCCESS = 'app/articles/SAVE_SUCCESS';
 // const SAVE_FAIL = 'app/members/SAVE_FAIL';
@@ -18,11 +18,17 @@ const ARTICLES_SAVE_SUCCESS = 'app/articles/SAVE_SUCCESS';
 // const DELETE_FAIL = 'app/members/DELETE_FAIL';
 
 // Reducers
-const articlesReducer = (state = [], action) => {
+const articlesReducer = (state = {list: [], editStarted: false}, action) => {
   switch (action.type) {
 
     case RECEIVE_ARTICLES:
-      return action.articles;
+      return {...state, list: action.articles};
+
+    case EDIT_START:
+      return {...state, editStarted: action.value, contentToEdit: action.content};
+
+    case EDIT_STOP:
+      return {...state, editStarted: action.value, contentToEdit: undefined};
 
     default:
       return state;
@@ -37,21 +43,28 @@ export function receiveArticles(articles) {
   };
 }
 
-export function addArticles() {
-  return {
-    type: ADD_ARTICLES
-  };
-}
 export function articlesSaveSuccess() {
   return {
     type: ARTICLES_SAVE_SUCCESS
   };
 }
+export function articlesEditStart(content) {
+  return {
+    type: EDIT_START,
+    value: true,
+    content
+  };
+}
+export function articlesEditStop() {
+  return {
+    type: EDIT_STOP,
+    value: false
+  };
+}
 
 export const fetchArticles = () => dispatch => {
-  const API_ARTICLES_URL = "//www.thecodestein.com/api/articles";
   axios
-    .get(API_ARTICLES_URL)
+    .get(CONFIG.api.articles.list)
     .then(response => {
       const articleRequestList = response.data.map(url => axios.get(url));
       axios.all(articleRequestList)
@@ -62,22 +75,24 @@ export const fetchArticles = () => dispatch => {
     });
 };
 
-export const saveArticles = (authToken, content) => dispatch => {
-  let SAVE_ARTICLES_URL = "https://api.ricardovz.com/prod/ricardovz_uploader";
-  if (process.env.NODE_ENV !== 'production') {
-    SAVE_ARTICLES_URL = "https://pxgzx41l7b.execute-api.eu-central-1.amazonaws.com/prod/ricardovz_uploader";
-  }
+export const saveArticles = (authToken, content, title) => dispatch => {
+  // removed special characters
+  let normalisedTitle = title.replace(/[^a-zA-Z0-9 ]/g, "");
+
+  // replace the the space by underscores
+  normalisedTitle = normalisedTitle.replace(/ /g, "_");
+
   const data = {
     token: `${authToken}`,
-    bucket: "static.ricardovz.com",
-    key: "data/test2.json",
+    bucket: CONFIG.api.articles.add.bucket,
+    key: `${CONFIG.api.articles.add.prefix}${normalisedTitle}`,
     body: `${content}`
   };
 
   axios
-    .post(SAVE_ARTICLES_URL, data)
-    .then(response => console.log(response))
-    .then(() => dispatch(articlesSaveSuccess));
+    .post(CONFIG.api.articles.add.url, data)
+    .then(() => dispatch(articlesSaveSuccess))
+    .then(() => dispatch(articlesEditStop));
 };
 
 export default articlesReducer;

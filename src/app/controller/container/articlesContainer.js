@@ -5,7 +5,7 @@ import {addArticles, saveArticles} from "../modules/articles";
 // transforms the state to component properties
 const mapStateToProps = state => {
   return {
-    articles: state.articles,
+    articlesList: state.articles.list,
     isLoggedIn: state.auth.tokenId !== "",
     authToken: state.auth.tokenId
   };
