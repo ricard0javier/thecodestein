@@ -76,7 +76,6 @@ export const fetchArticles = () => dispatch => {
 };
 
 export const saveArticles = (authToken, content, title) => dispatch => {
-
   const data = {
     token: `${authToken}`,
     bucket: CONFIG.api.articles.add.bucket,
