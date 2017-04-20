@@ -6,11 +6,11 @@ const CONFIG = {
   },
   api: {
     articles: {
-      list: "//static.ricardovz.com/data/articles.json",
+      list: "//ricardovz.com/static/articles.json",
       add: {
         url: "https://api.ricardovz.com/ricardovz_uploader",
         bucket: "static.ricardovz.com",
-        prefix: "data/"
+        prefix: "static/"
       }
     }
   }

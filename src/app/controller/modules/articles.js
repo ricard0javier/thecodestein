@@ -76,16 +76,11 @@ export const fetchArticles = () => dispatch => {
 };
 
 export const saveArticles = (authToken, content, title) => dispatch => {
-  // removed special characters
-  let normalisedTitle = title.replace(/[^a-zA-Z0-9 ]/g, "");
-
-  // replace the the space by underscores
-  normalisedTitle = normalisedTitle.replace(/ /g, "_");
 
   const data = {
     token: `${authToken}`,
     bucket: CONFIG.api.articles.add.bucket,
-    key: `${CONFIG.api.articles.add.prefix}${normalisedTitle}`,
+    key: `${CONFIG.api.articles.add.prefix}${title}`,
     body: `${content}`
   };
 
