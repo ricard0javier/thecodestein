@@ -7,7 +7,8 @@ import "./prismConfiguration";
 */
 marked.setOptions({
   highlight(code, lang) {
-    return Prism.highlight(code, Prism.languages[lang]);
+    const langAux = lang || 'bash';
+    return Prism.highlight(code, Prism.languages[langAux]);
   },
   langPrefix: "language-"
 });
