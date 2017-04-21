@@ -15,10 +15,10 @@ const Footer = ({loginText, handleLogin}) => (
   <footer>
     {/* Signature */}
     <div className="row" style={styles.footer}>
-      <span>Built by </span>
+      <span>Built by </span><br/>
       <a target="_blank" href="https://uk.linkedin.com/in/ricardo-villanueva-12b73426" alt="Click to check my Linkedin profile!">
         <i className="fa fa-linkedin-square fa-2x">Ricardo Villanueva&nbsp;</i>
-      </a>
+      </a><br/>
       <span>[&nbsp;</span>
       <a target="_blank" href="https://www.facebook.com/ricardovz.me" alt="Click to check my Facebook profile!">
         <i className="fa fa-facebook-square"/>
@@ -36,11 +36,11 @@ const Footer = ({loginText, handleLogin}) => (
         <i className="fa fa-linkedin-square"/>
       </a>
       <span>&nbsp;]</span>
-    </div>
+    </div><br/><br/>
 
     {/* Login */}
     <div>
-      <Button className="pull-right" bsStyle="primary" onClick={handleLogin}>{loginText}</Button>
+      <Button bsStyle="primary" onClick={handleLogin}>{loginText}</Button>
     </div>
   </footer>
 );

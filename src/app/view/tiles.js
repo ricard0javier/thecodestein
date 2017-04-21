@@ -8,7 +8,7 @@ import DevTools from "../controller/container/devToolsContainer";
 */
 const Tiles = ({children}) => {
   return (
-    <div className="container-fluid">
+    <div>
       <Header/>
       {children}
       <DevTools/>
