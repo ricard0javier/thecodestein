@@ -36,11 +36,11 @@ const Footer = ({loginText, handleLogin}) => (
         <i className="fa fa-linkedin-square"/>
       </a>
       <span>&nbsp;]</span>
-    </div><br/><br/>
+    </div>
 
     {/* Login */}
     <div>
-      <Button bsStyle="primary" onClick={handleLogin}>{loginText}</Button>
+      <Button className="center-block" bsStyle="primary" onClick={handleLogin}>{loginText}</Button>
     </div>
   </footer>
 );
