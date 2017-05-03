@@ -11,7 +11,7 @@ const RECEIVE_ARTICLES = 'app/articles/RECEIVE_ARTICLES';
 const EDIT_START = 'app/members/EDIT_START';
 const EDIT_STOP = 'app/members/EDIT_STOP';
 // const ARTICLES_SAVE = 'app/articles/SAVE';
-const ARTICLES_SAVE_SUCCESS = 'app/articles/SAVE_SUCCESS';
+// const ARTICLES_SAVE_SUCCESS = 'app/articles/SAVE_SUCCESS';
 // const SAVE_FAIL = 'app/members/SAVE_FAIL';
 // const DELETE = 'app/members/DELETE';
 // const DELETE_SUCCESS = 'app/members/DELETE_SUCCESS';
@@ -40,12 +40,6 @@ export function receiveArticles(articles) {
   return {
     type: RECEIVE_ARTICLES,
     articles
-  };
-}
-
-export function articlesSaveSuccess() {
-  return {
-    type: ARTICLES_SAVE_SUCCESS
   };
 }
 
@@ -105,8 +99,8 @@ export const saveArticles = (authToken, content, title) => dispatch => {
 
   axios
     .post(CONFIG.api.articles.add.url, data)
-    .then(() => dispatch(articlesSaveSuccess()))
-    .then(() => dispatch(articlesEditStop()));
+    .then(() => dispatch(articlesEditStop()))
+    .then(() => dispatch(fetchArticles()));
 };
 
 export default articlesReducer;
