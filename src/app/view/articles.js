@@ -3,7 +3,7 @@ import Article from "./article";
 import ArticleUploader from "../controller/container/articleUploaderContainer";
 import ArticleListManager from "../controller/container/articleListManagerContainer";
 
-const Articles = ({articlesList}) => {
+const Articles = ({articlesList, isLoggedIn, articlesEditStart}) => {
   return (
     <div className="container bodyContainer">
 
@@ -15,8 +15,8 @@ const Articles = ({articlesList}) => {
 
       {/* Articles */}
       <div>
-        {articlesList.map((articleContent, index) => (
-          <Article key={index} content={articleContent}/>
+        {articlesList.map((article, index) => (
+          <Article key={index} content={article.content} isLoggedIn={isLoggedIn} url={article.url} articlesEditStart={articlesEditStart}/>
         ))}
       </div>
 
@@ -26,10 +26,8 @@ const Articles = ({articlesList}) => {
 
 Articles.propTypes = {
   articlesList: PropTypes.array.isRequired,
-  addArticles: PropTypes.func,
-  articleSaveHandler: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
-  authToken: PropTypes.string
+  articlesEditStart: PropTypes.func.isRequired
 };
 
 export default Articles;

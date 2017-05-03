@@ -70,9 +70,12 @@ export const articlesEditStart = (content, fileName, isRef) => dispatch => {
   if (!isRef) {
     return dispatch(articlesEditStartSupport(content, fileName));
   }
+
+  // when the content to edit comes from an Ref, the last url part will define the fileName
+  const finalFileName = content.substring(content.lastIndexOf("/") + 1);
   axios
     .get(content)
-    .then(response => dispatch(articlesEditStartSupport(response.data, fileName)));
+    .then(response => dispatch(articlesEditStartSupport(response.data, finalFileName)));
 };
 
 export const fetchArticles = () => dispatch => {
@@ -80,10 +83,21 @@ export const fetchArticles = () => dispatch => {
   axios
     .get(articleListUrl)
     .then(response => {
+      // for every entry of the array that has been returned,
+      // it assumes it is an URL and prepares the requests to get the data
       const articleRequestList = response.data.map(url => axios.get(url));
+
       axios.all(articleRequestList)
         .then(axios.spread((...articleResponseList) => {
-          const articleContentList = articleResponseList.map(response => marked(response.data));
+          // map response to expected object
+          const articleContentList = articleResponseList.map(response => {
+            return {
+              url: response.config.url,
+              content: marked(response.data)
+            };
+          });
+
+          // dispatch the update of the articles
           dispatch(receiveArticles(articleContentList));
         }));
     });
