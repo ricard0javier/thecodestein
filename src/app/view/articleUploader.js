@@ -2,7 +2,7 @@ import React, {PropTypes} from "react";
 import Dropzone from "react-dropzone";
 import {Button, Form, FormGroup, InputGroup, FormControl, ControlLabel, Col} from "react-bootstrap";
 
-const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, articlesEditStart, contentToEdit, fileName}) => {
+const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, articlesEditStart, articlesEditStop, contentToEdit, fileName}) => {
   if (!isLoggedIn) {
     return <span/>;
   }
@@ -30,6 +30,11 @@ const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, artic
     saveArticles(authToken, contentNode.value, fileNameNode.value);
   };
 
+  const handleCancel = event => {
+    event.preventDefault();
+    articlesEditStop();
+  };
+
   return (
     <div>
       {!hasStarted &&
@@ -40,7 +45,7 @@ const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, artic
         </Dropzone>
       }
       {hasStarted &&
-        <Form horizontal onSubmit={handleSave}>
+        <Form horizontal>
           {/* title input */}
           <FormGroup>
             <InputGroup>
@@ -57,8 +62,12 @@ const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, artic
 
           {/* save button */}
           <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button type="submit" className="pull-right">Save</Button>
+            <Col sm={10}/>
+            <Col sm={1}>
+              <Button type="submit" className="pull-right" onClick={handleCancel}>Cancel</Button>
+            </Col>
+            <Col sm={1}>
+              <Button type="submit" className="pull-right" onClick={handleSave}>Save</Button>
             </Col>
           </FormGroup>
 
@@ -74,6 +83,7 @@ ArticleUploader.propTypes = {
   hasStarted: PropTypes.bool.isRequired,
   saveArticles: PropTypes.func.isRequired,
   articlesEditStart: PropTypes.func.isRequired,
+  articlesEditStop: PropTypes.func.isRequired,
   fileName: PropTypes.string,
   contentToEdit: PropTypes.string
 };

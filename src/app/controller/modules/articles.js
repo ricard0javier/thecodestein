@@ -50,10 +50,17 @@ export function articlesSaveSuccess() {
 }
 
 export const articlesEditStartSupport = (content, fileName) => {
+  // detects if it needs to prettify the content
+  let fileContent = content;
+  if (fileName.toLowerCase().endsWith(".json")) {
+    fileContent = JSON.stringify(content, null, 2);
+  }
+
+  // modify the DOM
   return {
     type: EDIT_START,
     value: true,
-    content,
+    content: fileContent,
     fileName
   };
 };
@@ -66,13 +73,12 @@ export function articlesEditStop() {
 }
 
 export const articlesEditStart = (content, fileName, isRef) => dispatch => {
-  if (isRef) {
-    axios
-      .get(content)
-      .then(response => dispatch(articlesEditStartSupport(JSON.stringify(response.data), fileName)));
-  } else {
-    dispatch(articlesEditStartSupport(content, fileName));
+  if (!isRef) {
+    return dispatch(articlesEditStartSupport(content, fileName));
   }
+  axios
+    .get(content)
+    .then(response => dispatch(articlesEditStartSupport(response.data, fileName)));
 };
 
 export const fetchArticles = () => dispatch => {
@@ -99,8 +105,8 @@ export const saveArticles = (authToken, content, title) => dispatch => {
 
   axios
     .post(CONFIG.api.articles.add.url, data)
-    .then(() => dispatch(articlesSaveSuccess))
-    .then(() => dispatch(articlesEditStop));
+    .then(() => dispatch(articlesSaveSuccess()))
+    .then(() => dispatch(articlesEditStop()));
 };
 
 export default articlesReducer;
