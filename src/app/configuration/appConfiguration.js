@@ -6,7 +6,8 @@ const CONFIG = {
   },
   api: {
     articles: {
-      list: "//ricardovz.com/static/articles.json",
+      listPrefix: "//ricardovz.com/static/",
+      listFileName: "articles.json",
       add: {
         url: "https://api.ricardovz.com/ricardovz_uploader",
         bucket: "static.ricardovz.com",

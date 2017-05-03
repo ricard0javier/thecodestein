@@ -2,7 +2,7 @@ import React, {PropTypes} from "react";
 import Dropzone from "react-dropzone";
 import {Button, Form, FormGroup, InputGroup, FormControl, ControlLabel, Col} from "react-bootstrap";
 
-const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, articlesEditStart, contentToEdit}) => {
+const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, articlesEditStart, contentToEdit, fileName}) => {
   if (!isLoggedIn) {
     return <span/>;
   }
@@ -12,9 +12,9 @@ const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, artic
     contentNode = node;
   };
 
-  let titleNode = {};
-  const handleTitle = node => {
-    titleNode = node;
+  let fileNameNode = {};
+  const handleFileName = node => {
+    fileNameNode = node;
   };
 
   const loadFileAsText = fileUploadedEvent => {
@@ -27,7 +27,7 @@ const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, artic
 
   const handleSave = event => {
     event.preventDefault();
-    saveArticles(authToken, contentNode.value, titleNode.value);
+    saveArticles(authToken, contentNode.value, fileNameNode.value);
   };
 
   return (
@@ -44,8 +44,8 @@ const ArticleUploader = ({isLoggedIn, authToken, hasStarted, saveArticles, artic
           {/* title input */}
           <FormGroup>
             <InputGroup>
-              <InputGroup.Addon>Title</InputGroup.Addon>
-              <FormControl inputRef={handleTitle} type="text"/>
+              <InputGroup.Addon>File Name</InputGroup.Addon>
+              <FormControl inputRef={handleFileName} type="text" defaultValue={fileName}/>
             </InputGroup>
           </FormGroup>
 
@@ -74,6 +74,7 @@ ArticleUploader.propTypes = {
   hasStarted: PropTypes.bool.isRequired,
   saveArticles: PropTypes.func.isRequired,
   articlesEditStart: PropTypes.func.isRequired,
+  fileName: PropTypes.string,
   contentToEdit: PropTypes.string
 };
 

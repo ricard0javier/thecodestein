@@ -8,6 +8,7 @@ const mapStateToProps = state => {
     isLoggedIn: state.auth.tokenId !== "",
     authToken: state.auth.tokenId,
     hasStarted: state.articles.editStarted,
+    fileName: state.articles.fileName,
     contentToEdit: state.articles.contentToEdit
   };
 };
@@ -16,7 +17,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     saveArticles: (authToken, content, title) => dispatch(saveArticles(authToken, content, title)),
-    articlesEditStart: content => dispatch(articlesEditStart(content))
+    articlesEditStart: (content, fileName) => dispatch(articlesEditStart(content, fileName))
   };
 };
 

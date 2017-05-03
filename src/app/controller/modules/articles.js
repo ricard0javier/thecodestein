@@ -25,7 +25,7 @@ const articlesReducer = (state = {list: [], editStarted: false}, action) => {
       return {...state, list: action.articles};
 
     case EDIT_START:
-      return {...state, editStarted: action.value, contentToEdit: action.content};
+      return {...state, editStarted: action.value, contentToEdit: action.content, fileName: action.fileName};
 
     case EDIT_STOP:
       return {...state, editStarted: action.value, contentToEdit: undefined};
@@ -48,13 +48,16 @@ export function articlesSaveSuccess() {
     type: ARTICLES_SAVE_SUCCESS
   };
 }
-export function articlesEditStart(content) {
+
+export const articlesEditStartSupport = (content, fileName) => {
   return {
     type: EDIT_START,
     value: true,
-    content
+    content,
+    fileName
   };
-}
+};
+
 export function articlesEditStop() {
   return {
     type: EDIT_STOP,
@@ -62,9 +65,20 @@ export function articlesEditStop() {
   };
 }
 
+export const articlesEditStart = (content, fileName, isRef) => dispatch => {
+  if (isRef) {
+    axios
+      .get(content)
+      .then(response => dispatch(articlesEditStartSupport(JSON.stringify(response.data), fileName)));
+  } else {
+    dispatch(articlesEditStartSupport(content, fileName));
+  }
+};
+
 export const fetchArticles = () => dispatch => {
+  const articleListUrl = CONFIG.api.articles.listPrefix + CONFIG.api.articles.listFileName;
   axios
-    .get(CONFIG.api.articles.list)
+    .get(articleListUrl)
     .then(response => {
       const articleRequestList = response.data.map(url => axios.get(url));
       axios.all(articleRequestList)
