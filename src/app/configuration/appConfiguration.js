@@ -9,7 +9,7 @@ const CONFIG = {
       listPrefix: "//ricardovz.com/static/",
       listFileName: "articles.json",
       add: {
-        url: "https://api.ricardovz.com/ricardovz_uploader",
+        url: "https://api.ricardovz.com/articles",
         bucket: "static.ricardovz.com",
         prefix: "static/"
       }
@@ -18,7 +18,7 @@ const CONFIG = {
 };
 
 if (process.env.NODE_ENV !== 'production') {
-  CONFIG.api.articles.add.url = "https://pxgzx41l7b.execute-api.eu-central-1.amazonaws.com/prod/ricardovz_uploader";
+  CONFIG.api.articles.add.url = "https://pxgzx41l7b.execute-api.eu-central-1.amazonaws.com/prod/articles";
 }
 
 export default CONFIG;
