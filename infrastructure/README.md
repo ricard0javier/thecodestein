@@ -1,6 +1,7 @@
-Pushing Notifications
+Markdown File Example 
 ======================
 
+*This file contains different examples of text blocks in markdown*
 
 TODO
 
@@ -40,7 +41,7 @@ export class Main extends Component {
       <div style={styles.container}>
         <Header/>
         <main className="container" style={styles.main}>
-          <Articles url="http://www.thecodestein.com/api/articles"/>
+          <Articles url="http://www.vierica.com/api/articles"/>
         </main>
         <Footer/>
       </div>

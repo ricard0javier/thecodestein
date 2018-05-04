@@ -87,8 +87,8 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "deploy": "gulp cleanS3Bucket --bucketName dev.ricardovz.com && s3-deploy './dist/**' --cwd './dist' --signatureVersion v4 --region eu-central-1 --bucket dev.ricardovz.com",
-    "promoteToLive": "gulp cloneS3BucketContent --fromBucketName dev.ricardovz.com --toBucketName www.ricardovz.com"
+    "deploy": "gulp cleanS3Bucket --bucketName dev.vierica.com && s3-deploy './dist/**' --cwd './dist' --signatureVersion v4 --region eu-central-1 --bucket dev.vierica.com",
+    "promoteToLive": "gulp cloneS3BucketContent --fromBucketName dev.vierica.com --toBucketName www.vierica.com"
   },
   "eslintConfig": {
     "root": true,
@@ -101,10 +101,10 @@
       "xo-space/esnext"
     ]
   },
-  "name": "thecodestein.com",
+  "name": "vierica.com",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:ricard0javier/thecodestein.git",
+  "repository": "git@github.com:ricard0javier/vierica.git",
   "author": "Ricardo Villanueva <villanueva.ricardo@gmail.com>",
   "license": "MIT"
 }

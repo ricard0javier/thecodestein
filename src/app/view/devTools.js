@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
 import {Button} from "react-bootstrap";
-const DevTools = ({handleLogin}) => {
+const DevTools = ({isLoggedIn, handleLogin}) => {
   if (process.env.NODE_ENV === 'production') {
     return <span/>;
   }
@@ -8,13 +8,16 @@ const DevTools = ({handleLogin}) => {
     <div className="dev-tools">
       <h3>[Dev Tools]</h3>
       <div>
-        <Button bsStyle="primary" onClick={handleLogin}>Simulate Login</Button>
+        {!isLoggedIn &&
+          <Button bsStyle="primary" onClick={handleLogin}>Simulate Login</Button>
+        }
       </div>
     </div>
   );
 };
 
 DevTools.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
   handleLogin: PropTypes.func.isRequired
 };
 
